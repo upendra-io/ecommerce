@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
@@ -8,13 +8,16 @@ const Signup = () => {
   const handleRequest = async () => {
     try {
       const res = await fetch("http://localhost:3001/signup", {
+        credentials: "include",
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers: { "Content-Type": "application/json" },
       });
-      let response = await res.json();
-
-      console.log(response);
+      const data = await res.json();
+      if (data.errors) {
+        const emailError = data.errors.email;
+        const passwordError = data.errors.password;
+      }
     } catch (err) {
       console.log(err);
     }
@@ -30,6 +33,7 @@ const Signup = () => {
         }}
         className="input"
       />
+      <div className="input error"></div>
       <label>Password</label>
       <input
         type="password"
@@ -38,8 +42,8 @@ const Signup = () => {
         }}
         className="input"
       />
-      <div className="error"></div>
-      <Link to="/products">
+      <div className="password error"></div>
+      <Link>
         <button className="submit" onClick={handleRequest}>
           Signup
         </button>
