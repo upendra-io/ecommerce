@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "./navbar";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,32 +29,35 @@ const Login = () => {
   };
 
   return (
-    <div className="App">
-      <h1>Login</h1>
-      <label>Email</label>
-      <input
-        type="text"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-        className="input"
-      />
-      <div className="input error">{error.emailError}</div>
-      <label>Password</label>
-      <input
-        type="password"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-        className="input"
-      />
-      <div className="password error">{error.passwordError}</div>
-      <Link>
-        <button className="submit" onClick={handleRequest}>
-          Login
-        </button>
-      </Link>
-    </div>
+    <>
+      <Navbar />
+      <div className="App">
+        <h1>Login</h1>
+        <label>Email</label>
+        <input
+          type="text"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          className="input"
+        />
+        <div className="input error">{error.emailError}</div>
+        <label>Password</label>
+        <input
+          type="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          className="input"
+        />
+        <div className="password error">{error.passwordError}</div>
+        <Link>
+          <button className="submit" onClick={handleRequest}>
+            Login
+          </button>
+        </Link>
+      </div>
+    </>
   );
 };
 
