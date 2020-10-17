@@ -20,9 +20,13 @@ const App = () => {
           render={() => <Login auth={auth} setAuth={setAuth} />}
         />
         <Route exact path="/logout" component={Logout} />
-        <Route exact path="/signup" component={Signup} />
+        <Route
+          exact
+          path="/signup"
+          render={() => <Signup auth={auth} setAuth={setAuth} />}
+        />
         <ProtectedRoute exact path="/products" component={Home} />
-        <Route exact path="/" auth={auth} component={Landing} />
+        <Route exact path="/" component={Landing} />
       </Switch>
     </Router>
   );

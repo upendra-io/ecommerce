@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar items="logout" />
       <div className="grid">
         {names.map((name) => (
           <div className="card" key={name}>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "./navbar";
 
 import Home from "./home";
 
@@ -32,34 +31,31 @@ const Login = ({ setAuth, auth }) => {
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="App">
-        <h1>Login</h1>
-        <label>Email</label>
-        <input
-          type="text"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          className="input"
-        />
-        <div className="input error">{error.emailError}</div>
-        <label>Password</label>
-        <input
-          type="password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          className="input"
-        />
-        <div className="password error">{error.passwordError}</div>
-        <button className="submit" onClick={handleRequest}>
-          Login
-        </button>
-        {auth && <Home />}
-      </div>
-    </>
+    <div className="App">
+      <h1>Login</h1>
+      <label>Email</label>
+      <input
+        type="text"
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+        className="input"
+      />
+      <div className="input error">{error.emailError}</div>
+      <label>Password</label>
+      <input
+        type="password"
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
+        className="input"
+      />
+      <div className="password error">{error.passwordError}</div>
+      <button className="submit" onClick={handleRequest}>
+        Login
+      </button>
+      {auth && <Home />}
+    </div>
   );
 };
 
