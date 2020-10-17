@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 
-const Login = () => {
+import Home from "./home";
+
+const Login = ({ setAuth, auth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
@@ -21,6 +22,8 @@ const Login = () => {
           emailError: data.errors.email,
           passwordError: data.errors.password,
         });
+      } else {
+        setAuth(true);
       }
       console.log(data);
     } catch (err) {
@@ -51,11 +54,10 @@ const Login = () => {
           className="input"
         />
         <div className="password error">{error.passwordError}</div>
-        <Link>
-          <button className="submit" onClick={handleRequest}>
-            Login
-          </button>
-        </Link>
+        <button className="submit" onClick={handleRequest}>
+          Login
+        </button>
+        {auth && <Home />}
       </div>
     </>
   );

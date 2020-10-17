@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Navbar from "./navbar";
 
 const Signup = () => {
@@ -51,11 +50,9 @@ const Signup = () => {
           className="input"
         />
         <div className="password error">{error.passwordError}</div>
-        <Link>
-          <button className="submit" onClick={handleRequest}>
-            Signup
-          </button>
-        </Link>
+        <button className="submit" onClick={handleRequest}>
+          Signup
+        </button>
       </div>
     </>
   );
