@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-
-import Home from "./home";
+import { Redirect } from "react-router-dom";
 
 const Login = ({ setAuth, auth }) => {
   const [email, setEmail] = useState("");
@@ -54,7 +53,7 @@ const Login = ({ setAuth, auth }) => {
       <button className="submit" onClick={handleRequest}>
         Login
       </button>
-      {auth && <Home />}
+      {auth && <Redirect to="/products" />}
     </div>
   );
 };

@@ -19,13 +19,17 @@ const App = () => {
           path="/login"
           render={() => <Login auth={auth} setAuth={setAuth} />}
         />
-        <Route exact path="/logout" component={Logout} />
+        <Route
+          exact
+          path="/logout"
+          render={() => <Logout auth={auth} setAuth={setAuth} />}
+        />
         <Route
           exact
           path="/signup"
           render={() => <Signup auth={auth} setAuth={setAuth} />}
         />
-        <ProtectedRoute exact path="/products" component={Home} />
+        <ProtectedRoute exact path="/products" component={Home} auth={auth} />
         <Route exact path="/" component={Landing} />
       </Switch>
     </Router>
