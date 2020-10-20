@@ -5,6 +5,8 @@ import Signup from "./components/signup";
 import Landing from "./components/landing";
 import Home from "./components/home";
 import ProtectedRoute from "./components/protectedRoute";
+import Product from "./components/product";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Logout } from "./components/logout";
 
@@ -29,7 +31,8 @@ const App = () => {
           path="/signup"
           render={() => <Signup auth={auth} setAuth={setAuth} />}
         />
-        <ProtectedRoute exact path="/products" component={Home} auth={auth} />
+        <Route exact path="/products/:product_id" component={Product} />
+        <ProtectedRoute exact path="/products" component={Home} />
         <Route exact path="/" component={Landing} />
       </Switch>
     </Router>

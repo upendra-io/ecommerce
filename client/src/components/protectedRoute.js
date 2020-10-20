@@ -1,15 +1,17 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
-const ProtectedRoute = ({ component: Component, auth }) => {
+const ProtectedRoute = ({ component: Component }) => {
   return (
     <Route
-      {...auth}
       render={(props) => {
-        if (auth) {
+        const authLocal = localStorage.getItem("auth");
+        if (authLocal !== "false") {
           return <Component {...props} />;
         } else {
-          return <h1>You are not authorized</h1>;
+          return (
+            <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+          );
         }
       }}
     />

@@ -21,6 +21,7 @@ const Login = ({ setAuth, auth }) => {
           passwordError: data.errors.password,
         });
       } else {
+        localStorage.setItem("auth", "true");
         setAuth(true);
       }
       console.log(data);
@@ -53,7 +54,13 @@ const Login = ({ setAuth, auth }) => {
       <button className="submit" onClick={handleRequest}>
         Login
       </button>
-      {auth && <Redirect to="/products" />}
+      {auth && (
+        <Redirect
+          to={{
+            pathname: "/products",
+          }}
+        />
+      )}
     </div>
   );
 };
