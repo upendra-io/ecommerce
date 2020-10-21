@@ -1,4 +1,7 @@
 require("dotenv").config();
+
+var data = require("./data");
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -27,8 +30,8 @@ mongoose
   .then((result) => app.listen(3001, () => console.log("connected")))
   .catch((err) => console.log(err));
 
-app.get("/", (req, res) => {
-  res.send("hello world");
+app.get("/product", (req, res) => {
+  res.json(data.products);
 });
 
 app.use(authRoutes);

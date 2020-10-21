@@ -6,7 +6,7 @@ import Home from "./components/home";
 import ProtectedRoute from "./components/protectedRoute";
 import Product from "./components/product";
 
-import store from "./store";
+import store from "./store/store";
 
 import "./index.css";
 
@@ -37,7 +37,7 @@ const App = () => {
             render={() => <Signup auth={auth} setAuth={setAuth} />}
           />
           <Route exact path="/products/:product_id" component={Product} />
-          <ProtectedRoute exact path="/products" component={Home} />
+          <ProtectedRoute exact path="/products" component={Home} auth={auth} />
           <Route exact path="/" component={Landing} />
         </Switch>
       </Router>

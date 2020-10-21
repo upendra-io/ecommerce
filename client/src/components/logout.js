@@ -9,7 +9,6 @@ const Logout = () => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }, []);
-  localStorage.setItem("auth", false);
 
   return <Redirect to="/" />;
 };

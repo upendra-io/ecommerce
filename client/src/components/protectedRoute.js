@@ -1,12 +1,11 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-const ProtectedRoute = ({ component: Component }) => {
+const ProtectedRoute = ({ component: Component, auth }) => {
   return (
     <Route
       render={(props) => {
-        const authLocal = localStorage.getItem("auth");
-        if (authLocal !== "false") {
+        if (auth) {
           return <Component {...props} />;
         } else {
           return (

@@ -21,7 +21,6 @@ const Login = ({ setAuth, auth }) => {
           passwordError: data.errors.password,
         });
       } else {
-        localStorage.setItem("auth", "true");
         setAuth(true);
       }
       console.log(data);
