@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
+const { requireAuth } = require("../middleware/authMiddleware");
+
 const authRoutes = require("../routes/authRoutes");
 
 const app = express();
@@ -19,6 +21,7 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
+app.use(authRoutes);
 
 const dbURI = process.env.DBURI;
 mongoose
@@ -30,8 +33,6 @@ mongoose
   .then((result) => app.listen(3001, () => console.log("connected")))
   .catch((err) => console.log(err));
 
-app.get("/product", (req, res) => {
+app.get("/product", requireAuth, (req, res) => {
   res.json(data.products);
 });
-
-app.use(authRoutes);

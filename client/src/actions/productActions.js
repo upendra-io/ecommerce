@@ -8,10 +8,13 @@ import axios from "axios";
 const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get("http://localhost:3001/product");
+    const { data } = await axios.get("http://localhost:3001/product", {
+      withCredentials: true,
+    });
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (err) {
     dispatch({ type: PRODUCT_LIST_ERROR, payload: err.message });
+    console.log(err.message);
   }
 };
 

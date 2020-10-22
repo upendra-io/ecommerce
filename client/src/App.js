@@ -3,7 +3,6 @@ import Login from "./components/login";
 import Signup from "./components/signup";
 import Landing from "./components/landing";
 import Home from "./components/home";
-import ProtectedRoute from "./components/protectedRoute";
 import Product from "./components/product";
 
 import store from "./store/store";
@@ -24,7 +23,7 @@ const App = () => {
           <Route
             exact
             path="/login"
-            render={() => <Login auth={auth} setAuth={setAuth} />}
+            render={() => <Login setAuth={setAuth} auth={auth} />}
           />
           <Route
             exact
@@ -37,7 +36,7 @@ const App = () => {
             render={() => <Signup auth={auth} setAuth={setAuth} />}
           />
           <Route exact path="/products/:product_id" component={Product} />
-          <ProtectedRoute exact path="/products" component={Home} auth={auth} />
+          <Route exact path="/products" component={Home} />
           <Route exact path="/" component={Landing} />
         </Switch>
       </Router>

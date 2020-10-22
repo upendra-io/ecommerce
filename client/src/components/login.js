@@ -23,7 +23,6 @@ const Login = ({ setAuth, auth }) => {
       } else {
         setAuth(true);
       }
-      console.log(data);
     } catch (err) {
       console.log(err);
     }

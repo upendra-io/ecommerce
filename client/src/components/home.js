@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(listProducts());
-  }, []);
+  }, [dispatch]);
 
   return loading ? (
     <div>loading</div>
@@ -26,7 +26,7 @@ const Home = () => {
       <div className="grid">
         {products.map((product) => (
           <Link
-            to={"/products/" + product}
+            to={"/products/" + product._id}
             key={product._id}
             className="product"
           >
