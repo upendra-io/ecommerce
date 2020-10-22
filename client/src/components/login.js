@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
 const Login = ({ setAuth, auth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
+
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const handleRequest = async () => {
     try {
@@ -33,6 +39,7 @@ const Login = ({ setAuth, auth }) => {
       <h1>Login</h1>
       <label>Email</label>
       <input
+        ref={inputRef}
         type="text"
         onChange={(e) => {
           setEmail(e.target.value);
