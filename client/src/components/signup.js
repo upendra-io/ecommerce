@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Redirect } from "react-router";
 
 const Signup = ({ auth, setAuth }) => {
@@ -6,6 +6,12 @@ const Signup = ({ auth, setAuth }) => {
   const [password, setPassword] = useState("");
 
   const [error, setError] = useState({});
+
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const handleRequest = async () => {
     try {
@@ -34,6 +40,7 @@ const Signup = ({ auth, setAuth }) => {
       <h1>Signup</h1>
       <label>Email</label>
       <input
+        ref={inputRef}
         type="text"
         onChange={(e) => {
           setEmail(e.target.value);
